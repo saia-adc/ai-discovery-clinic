@@ -725,7 +725,7 @@ function escapeHtml(s) { return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&l
 // SHEET PROXY SUBMISSION
 // Replace SCRIPT_URL with your deployed Google Apps Script Web App URL
 // ─────────────────────────────────────────────────────────────────────────────
-const SCRIPT_URL = "https://script.google.com/a/macros/saia.org.sg/s/AKfycbzJZgKeojileP5Tfx65W8IsMpCiCeKCC4KJLHDI7hLsqIMBAU4jkvXXbiO6FfkHlEnb/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzJZgKeojileP5Tfx65W8IsMpCiCeKCC4KJLHDI7hLsqIMBAU4jkvXXbiO6FfkHlEnb/exec";
 
 function submitToGoogleForm(r) {
   if (!SCRIPT_URL || SCRIPT_URL.includes("YOUR_APPS")) return;
