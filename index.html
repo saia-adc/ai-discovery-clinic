@@ -296,7 +296,19 @@
     <div class="name-row">
       <div class="field narrow"><label for="empLocal">Local employees</label><input type="number" id="empLocal" min="0" placeholder="e.g. 8" /></div>
       <div class="field narrow"><label for="empForeign">Foreign employees</label><input type="number" id="empForeign" min="0" placeholder="e.g. 4" /></div>
-      <div class="field"><label for="advisorName">Advisor name</label><input type="text" id="advisorName" placeholder="e.g. Jane Smith" autocomplete="name" /></div>
+      <div class="field"><label for="advisorName">Advisor name</label><select id="advisorName" style="width:100%; padding:10px 14px; font-size:15px; border:1px solid var(--hairline); border-radius:8px; font-family:inherit; color:var(--slate); background:white;">
+        <option value="">— Select advisor —</option>
+        <option value="Alvin Saw">Alvin Saw</option>
+        <option value="Anson Ang">Anson Ang</option>
+        <option value="CY Lim">CY Lim</option>
+        <option value="Gan Siling">Gan Siling</option>
+        <option value="Jason Lin">Jason Lin</option>
+        <option value="Kelvin Pek">Kelvin Pek</option>
+        <option value="Ken Ong">Ken Ong</option>
+        <option value="Kenny Tay">Kenny Tay</option>
+        <option value="Maria Singh">Maria Singh</option>
+        <option value="Steven Seow">Steven Seow</option>
+      </select></div>
     </div>
   </section>
 
@@ -359,15 +371,7 @@
 
     <div class="name-row" style="margin-top:18px;">
       <div class="field">
-        <label>Planning new hires?</label>
-        <div class="ynbtns" data-target="hireYN"><button type="button" data-val="Yes">Yes</button><button type="button" data-val="No">No</button></div>
-        <div class="conditional" id="hireYesPanel">
-          <label for="hireCount" style="font-size:12px; font-weight:600; color:var(--slate); margin-top:8px; display:block;">How many?</label>
-          <input type="number" id="hireCount" min="0" placeholder="e.g. 3" style="margin-top:4px;" />
-        </div>
-      </div>
-      <div class="field">
-        <label>Will you champion this AI project?</label>
+        <label>Will you be leading this project?</label>
         <div class="ynbtns" data-target="championYN"><button type="button" data-val="Yes">Yes</button><button type="button" data-val="No">No</button></div>
       </div>
     </div>
@@ -809,8 +813,7 @@ function submitToGoogleForm(r) {
     // Part 5
     budget:   document.getElementById("budget").value,
     grants:   grants,
-    hireYN:   answers.logistics.hireYN,
-    hireNum:  document.getElementById("hireCount").value,
+    
     champYN:  answers.logistics.championYN,
     picName:  document.getElementById("picName").value.trim(),
     picDesig: document.getElementById("picDesig").value.trim(),
@@ -914,7 +917,7 @@ document.getElementById("seeResultsBtn").addEventListener("click", () => {
     <div><strong>Local / Foreign</strong>${(document.getElementById("empLocal").value || "—") + " / " + (document.getElementById("empForeign").value || "—")}</div>
     <div><strong>Budget</strong>${document.getElementById("budget").value || "—"}</div>
     <div><strong>Grant awareness</strong>${grants}</div>
-    <div><strong>Hiring</strong>${answers.logistics.hireYN === "Yes" ? "Yes · " + (document.getElementById("hireCount").value || "—") : (answers.logistics.hireYN || "—")}</div>
+    
     <div><strong>Project champion</strong>${champion}</div>
     <div><strong>Preferred 1-on-1</strong>${document.getElementById("meetingTime").value || "—"}</div>
     <div><strong>Contact</strong>${(document.getElementById("contactNum").value || "—") + " · " + (document.getElementById("emailAddr").value || "—")}</div>`;
@@ -990,7 +993,7 @@ function copyResultsText() {
   lines.push(`Logistics:`);
   lines.push(`  Budget: ${document.getElementById("budget").value || "—"}`);
   lines.push(`  Grant awareness: ${grants}`);
-  lines.push(`  Hiring: ${answers.logistics.hireYN === "Yes" ? "Yes (" + (document.getElementById("hireCount").value || "—") + ")" : (answers.logistics.hireYN || "—")}`);
+
   if (answers.logistics.championYN === "No") {
     lines.push(`  Project champion: ${document.getElementById("picName").value || "—"} · ${document.getElementById("picDesig").value || "—"} · ${document.getElementById("picMobile").value || "—"} · ${document.getElementById("picEmail").value || "—"}`);
   } else {
