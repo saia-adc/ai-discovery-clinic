@@ -785,12 +785,9 @@ function submitToGoogleForm(r) {
     nextStep: r.nextStep,
   });
 
-  fetch(SCRIPT_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: payload.toString()
-  }).catch(err => console.warn("Submission error:", err));
+  // Use GET with query params — bypasses CORS restrictions on Workspace domains
+  const img = new Image();
+  img.src = SCRIPT_URL + "?" + payload.toString();
 }
 
 document.getElementById("seeResultsBtn").addEventListener("click", () => {
